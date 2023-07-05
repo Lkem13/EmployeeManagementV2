@@ -1,12 +1,12 @@
-﻿using System;
+﻿using EmployeeManagement.Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EmployeeManagement.Domain
 {
-    public class Position
+    public class Position : BaseDomainEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

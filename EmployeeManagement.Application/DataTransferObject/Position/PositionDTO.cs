@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmployeeManagement.Application.DataTransferObject
+namespace EmployeeManagement.Application.DataTransferObject.Position
 {
     public class PositionDTO : BaseDTO
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

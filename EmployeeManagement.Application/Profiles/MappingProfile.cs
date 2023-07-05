@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
-using EmployeeManagement.Application.DataTransferObject;
+using EmployeeManagement.Application.DataTransferObject.Location;
+using EmployeeManagement.Application.DataTransferObject.Position;
+using EmployeeManagement.Application.DataTransferObject.User;
 using EmployeeManagement.Domain;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,7 @@ namespace EmployeeManagement.Application.Profiles
         {
             CreateMap<Location, LocationDTO>().ReverseMap();
             CreateMap<Position, PositionDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
         }
     }
 }
