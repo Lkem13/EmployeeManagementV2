@@ -1,10 +1,14 @@
-﻿using System;
+﻿using EmployeeManagement.Application.DataTransferObject.Location;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EmployeeManagement.Application.CQRS.Locations.Requests.Commands
 {
-    internal class UpdateLocationCommand
+    public class UpdateLocationCommand : IRequest<Unit>
     {
+        public LocationDTO LocationDTO { get; set; }
+
     }
 }

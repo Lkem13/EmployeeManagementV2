@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using EmployeeManagement.Application.CQRS.Locations.Requests;
-using EmployeeManagement.Application.DataTransferObject;
+using EmployeeManagement.Application.CQRS.Locations.Requests.Queries;
+using EmployeeManagement.Application.DataTransferObject.Location;
 using EmployeeManagement.Application.Persistence.Repository;
 using MediatR;
 using System;
@@ -24,7 +24,7 @@ namespace EmployeeManagement.Application.CQRS.Locations.Handlers.Queries
         public async Task<LocationDTO> Handle(GetLocationDetailRequest request, CancellationToken cancellationToken)
         {
             var location = await _locationRepository.GetAsync(request.Id);
-            return _mapper.Map<PositionDTO>(location);
+            return _mapper.Map<LocationDTO>(location);
         }
     }
 }

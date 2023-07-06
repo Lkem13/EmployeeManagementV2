@@ -1,4 +1,4 @@
-﻿using EmployeeManagement.Application.DataTransferObject;
+﻿using EmployeeManagement.Application.DataTransferObject.Position;
 using MediatR;
 using System;
 using System.Collections.Generic;

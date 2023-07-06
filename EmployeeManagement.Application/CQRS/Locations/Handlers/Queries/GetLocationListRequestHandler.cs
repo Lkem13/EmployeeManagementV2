@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using EmployeeManagement.Application.CQRS.Locations.Requests;
-using EmployeeManagement.Application.DataTransferObject;
+using EmployeeManagement.Application.CQRS.Locations.Requests.Queries;
+using EmployeeManagement.Application.DataTransferObject.Location;
 using EmployeeManagement.Application.Persistence.Repository;
 using MediatR;
 using System;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EmployeeManagement.Application.CQRS.Positions.Handlers.Queries
+namespace EmployeeManagement.Application.CQRS.Locations.Handlers.Queries
 {
     public class GetLocationListRequestHandler : IRequestHandler<GetLocationListRequest, List<LocationDTO>>
     {

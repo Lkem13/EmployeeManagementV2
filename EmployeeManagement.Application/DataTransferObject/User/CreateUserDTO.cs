@@ -1,10 +1,16 @@
-﻿using System;
+﻿using EmployeeManagement.Application.DataTransferObject.Location;
+using EmployeeManagement.Application.DataTransferObject.Position;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EmployeeManagement.Application.DataTransferObject.User
 {
-    internal class CreateUserDTO
+    public class CreateUserDTO
     {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public int PositionId { get; set; }
+        public int LocationId { get; set; }
     }
 }

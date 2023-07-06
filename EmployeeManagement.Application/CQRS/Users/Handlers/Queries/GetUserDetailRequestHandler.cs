@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EmployeeManagement.Application.DataTransferObject;
 using EmployeeManagement.Application.Persistence.Repository;
 using MediatR;
 using System;
@@ -8,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using EmployeeManagement.Application.CQRS.Users.Requests.Queries;
+using EmployeeManagement.Application.DataTransferObject.User;
 
 namespace EmployeeManagement.Application.CQRS.Users.Handlers.Queries
 {

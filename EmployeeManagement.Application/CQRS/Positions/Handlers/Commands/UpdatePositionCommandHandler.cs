@@ -21,9 +21,9 @@ namespace EmployeeManagement.Application.CQRS.Positions.Handlers.Commands
             _mapper = mapper;
         }
 
-        public async Task<int> Handle(UpdatePositionCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdatePositionCommand request, CancellationToken cancellationToken)
         {
-            var position = _positionRepository.GetAsync(request.PositionDTO.Id);
+            var position = await _positionRepository.GetAsync(request.PositionDTO.Id);
 
             _mapper.Map(request.PositionDTO, position);
 

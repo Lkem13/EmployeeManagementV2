@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using EmployeeManagement.Application.CQRS.Positions.Requests.Queries;
-using EmployeeManagement.Application.DataTransferObject;
+using EmployeeManagement.Application.DataTransferObject.Position;
 using EmployeeManagement.Application.Persistence.Repository;
 using MediatR;
 using System;

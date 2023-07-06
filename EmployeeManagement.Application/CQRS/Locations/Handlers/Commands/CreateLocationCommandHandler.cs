@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EmployeeManagement.Application.CQRS.Positions.Requests.Commands;
+using EmployeeManagement.Application.CQRS.Locations.Requests.Commands;
 using EmployeeManagement.Application.Persistence.Repository;
 using EmployeeManagement.Domain;
 using MediatR;
@@ -9,26 +9,26 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EmployeeManagement.Application.CQRS.Positions.Handlers.Commands
+namespace EmployeeManagement.Application.CQRS.Locations.Handlers.Commands
 {
-    public class CreatePositionCommandHandler : IRequestHandler<CreatePositionCommand, int>
+    public class CreateLocationCommandHandler : IRequestHandler<CreateLocationCommand, int>
     {
-        private readonly IPositionRepository _positionRepository;
+        private readonly ILocationRepository _locationRepository;
         private readonly IMapper _mapper;
 
-        public CreatePositionCommandHandler(IPositionRepository positionRepository, IMapper mapper)
+        public CreateLocationCommandHandler(ILocationRepository locationRepository, IMapper mapper)
         {
-            _positionRepository = positionRepository;
+            _locationRepository = locationRepository;
             _mapper = mapper;
         }
 
-        public async Task<int> Handle(CreatePositionCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateLocationCommand request, CancellationToken cancellationToken)
         {
-            var position = _mapper.Map<Position>(request.PositionDTO);
+            var location = _mapper.Map<Location>(request.LocationDTO);
 
-            position = await _positionRepository.AddAsync(position);
+            location = await _locationRepository.AddAsync(location);
 
-            return position.Id;
+            return location.Id;
         }
     }
 }

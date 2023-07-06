@@ -4,7 +4,8 @@ using System.Text;
 
 namespace EmployeeManagement.Domain.Common
 {
-    internal class BaseDomainEntity
+    public abstract class BaseDomainEntity
     {
+        public int Id { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using EmployeeManagement.Application.DataTransferObject;
+﻿using EmployeeManagement.Application.DataTransferObject.Position;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,6 +8,6 @@ namespace EmployeeManagement.Application.CQRS.Positions.Requests.Queries
 {
     public class GetPositionDetailRequest : IRequest<PositionDTO>
     {
-        public string Name { get; set; }
+        public int Id{ get; set; }
     }
 }

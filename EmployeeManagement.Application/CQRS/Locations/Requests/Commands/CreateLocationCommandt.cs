@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Application.DataTransferObject;
+using EmployeeManagement.Application.DataTransferObject.Location;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace EmployeeManagement.Application.CQRS.Locations.Requests.Commands
 {
     public class CreateLocationCommand : IRequest<int>
     {
-        public LocationDTO LocationDTO { get; set; }
+        public CreateLocationDTO LocationDTO { get; set; }
     }
 }
  

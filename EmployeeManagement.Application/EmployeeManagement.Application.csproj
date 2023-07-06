@@ -14,12 +14,4 @@
     <ProjectReference Include="..\EmployeeManagement.Domain\EmployeeManagement.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CQRS\Locations\Handlers\Commands\" />
-    <Folder Include="CQRS\Locations\Handlers\Queries\" />
-    <Folder Include="CQRS\Locations\Requests\" />
-    <Folder Include="CQRS\Users\" />
-    <Folder Include="CQRS\Positions\Handlers\Commands\" />
-  </ItemGroup>
-
 </Project>
