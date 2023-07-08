@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EmployeeManagement.Application.CQRS.Locations.Requests.Commands;
 using EmployeeManagement.Application.CQRS.Positions.Handlers.Commands;
+using EmployeeManagement.Application.DataTransferObject.Location.Validators;
 using EmployeeManagement.Application.Persistence.Repository;
 using MediatR;
 using System;
@@ -24,6 +25,14 @@ namespace EmployeeManagement.Application.CQRS.Locations.Handlers.Commands
 
         public async Task<Unit> Handle(UpdateLocationCommand request, CancellationToken cancellationToken)
         {
+            var validator = new UpdateLocationDTOValidator();
+            var validationResult = await validator.ValidateAsync(request.LocationDTO);
+
+            if (validationResult.IsValid == false)
+            {
+                throw new Exception();
+            }
+
             var location = await _locationRepository.GetAsync(request.LocationDTO.Id);
 
             _mapper.Map(request.LocationDTO, location);
