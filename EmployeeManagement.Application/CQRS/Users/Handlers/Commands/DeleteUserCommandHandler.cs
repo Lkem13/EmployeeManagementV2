@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using EmployeeManagement.Application.CQRS.Users.Requests.Commands;
 using EmployeeManagement.Application.Exceptions;
-using EmployeeManagement.Application.Persistence.Repository;
+using EmployeeManagement.Application.Contracts.Persistence;
 using EmployeeManagement.Domain;
 using MediatR;
 using System;

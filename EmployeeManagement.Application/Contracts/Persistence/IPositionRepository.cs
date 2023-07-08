@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeManagement.Application.Persistence.Repository
+namespace EmployeeManagement.Application.Contracts.Persistence
 {
     public interface IPositionRepository : IGenericRepository<Position>
     {

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using EmployeeManagement.Application.CQRS.Locations.Requests.Queries;
 using EmployeeManagement.Application.DataTransferObject.Location;
-using EmployeeManagement.Application.Persistence.Repository;
+using EmployeeManagement.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;

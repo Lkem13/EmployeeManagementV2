@@ -1,4 +1,4 @@
-﻿using EmployeeManagement.Application.Persistence.Repository;
+﻿using EmployeeManagement.Application.Contracts.Persistence;
 using EmployeeManagement.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;

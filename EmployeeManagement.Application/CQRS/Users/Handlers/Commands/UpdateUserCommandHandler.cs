@@ -2,7 +2,7 @@
 using EmployeeManagement.Application.CQRS.Users.Requests.Commands;
 using EmployeeManagement.Application.DataTransferObject.User.Validators;
 using EmployeeManagement.Application.Exceptions;
-using EmployeeManagement.Application.Persistence.Repository;
+using EmployeeManagement.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;

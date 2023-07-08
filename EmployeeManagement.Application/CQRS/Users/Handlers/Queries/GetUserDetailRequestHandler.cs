@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EmployeeManagement.Application.Persistence.Repository;
+using EmployeeManagement.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
