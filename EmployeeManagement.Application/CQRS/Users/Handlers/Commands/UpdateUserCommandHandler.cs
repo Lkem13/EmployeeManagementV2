@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using EmployeeManagement.Application.CQRS.Users.Requests.Commands;
 using EmployeeManagement.Application.DataTransferObject.User.Validators;
+using EmployeeManagement.Application.Exceptions;
 using EmployeeManagement.Application.Persistence.Repository;
-using FluentValidation;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -34,14 +34,17 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
 
             if (validationResult.IsValid == false)
             {
-                throw new Exception();
+                throw new ValidationException(validationResult);
             }
 
             var user = await _userRepository.GetAsync(request.UserDTO.Id);
 
-            _mapper.Map(request.UserDTO, user);
+            if(request.UserDTO != null)
+            {
+                _mapper.Map(request.UserDTO, user);
 
-            await _userRepository.UpdateAsync(user);
+                await _userRepository.UpdateAsync(user);
+            }
 
             return Unit.Value;
         }

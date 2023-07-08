@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using EmployeeManagement.Application.CQRS.Users.Requests.Commands;
+using EmployeeManagement.Application.Exceptions;
 using EmployeeManagement.Application.Persistence.Repository;
+using EmployeeManagement.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,11 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
         public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetAsync(request.Id);
+
+            if(user == null)
+            {
+                throw new NotFoundException(nameof(User), request.Id);
+            }
 
             await _userRepository.DeleteAsync(user);
 

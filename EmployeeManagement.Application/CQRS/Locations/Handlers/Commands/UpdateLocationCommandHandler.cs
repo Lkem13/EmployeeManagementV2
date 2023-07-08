@@ -2,6 +2,7 @@
 using EmployeeManagement.Application.CQRS.Locations.Requests.Commands;
 using EmployeeManagement.Application.CQRS.Positions.Handlers.Commands;
 using EmployeeManagement.Application.DataTransferObject.Location.Validators;
+using EmployeeManagement.Application.Exceptions;
 using EmployeeManagement.Application.Persistence.Repository;
 using MediatR;
 using System;
@@ -30,7 +31,7 @@ namespace EmployeeManagement.Application.CQRS.Locations.Handlers.Commands
 
             if (validationResult.IsValid == false)
             {
-                throw new Exception();
+                throw new ValidationException(validationResult);
             }
 
             var location = await _locationRepository.GetAsync(request.LocationDTO.Id);

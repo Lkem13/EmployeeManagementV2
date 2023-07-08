@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using EmployeeManagement.Application.CQRS.Locations.Requests.Commands;
+using EmployeeManagement.Application.Exceptions;
+using EmployeeManagement.Domain;
 
 namespace EmployeeManagement.Application.CQRS.Locations.Handlers.Commands
 {
@@ -24,6 +26,11 @@ namespace EmployeeManagement.Application.CQRS.Locations.Handlers.Commands
             public async Task<Unit> Handle(DeleteLocationCommand request, CancellationToken cancellationToken)
             {
                 var location = await _locationRepository.GetAsync(request.Id);
+
+                if (location == null)
+                {
+                    throw new NotFoundException(nameof(Location), request.Id);
+                }
 
                 await _locationRepository.DeleteAsync(location);
 
