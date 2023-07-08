@@ -8,6 +8,5 @@ namespace EmployeeManagement.Application.Persistence.Repository
 {
     public interface IPositionRepository : IGenericRepository<Position>
     {
-        Task<Position> GetPosition(int id);
     }
 }
