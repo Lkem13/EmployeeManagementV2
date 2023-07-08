@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EmployeeManagement.Application.DataTransferObject.Position
 {
-    public class PositionDTO : BaseDTO
+    public class PositionDTO : BaseDTO, IPositionDTO
     {
         public string Name { get; set; }
     }

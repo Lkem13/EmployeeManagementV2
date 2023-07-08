@@ -4,9 +4,8 @@ using System.Text;
 
 namespace EmployeeManagement.Application.DataTransferObject.Position
 {
-    public class CreatePositionDTO : IPositionDTO
+    public interface IPositionDTO
     {
         public string Name { get; set; }
-
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EmployeeManagement.Application.DataTransferObject.User
 {
-    public class CreateUserDTO
+    public class CreateUserDTO : IUserDTO
     {
         public string Name { get; set; }
         public string Surname { get; set; }

@@ -1,11 +1,10 @@
-﻿using EmployeeManagement.Application.DataTransferObject.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EmployeeManagement.Application.DataTransferObject.User
 {
-    public class UpdateUserDTO : BaseDTO, IUserDTO
+    public interface IUserDTO
     {
         public string Name { get; set; }
         public string Surname { get; set; }

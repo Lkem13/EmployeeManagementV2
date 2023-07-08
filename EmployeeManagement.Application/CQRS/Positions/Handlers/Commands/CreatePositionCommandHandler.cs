@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EmployeeManagement.Application.CQRS.Positions.Requests.Commands;
+using EmployeeManagement.Application.DataTransferObject.Position.Validators;
 using EmployeeManagement.Application.Persistence.Repository;
 using EmployeeManagement.Domain;
 using MediatR;
@@ -24,6 +25,14 @@ namespace EmployeeManagement.Application.CQRS.Positions.Handlers.Commands
 
         public async Task<int> Handle(CreatePositionCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreatePositionDTOValidator();
+            var validationResult = await validator.ValidateAsync(request.PositionDTO);
+
+            if(validationResult.IsValid == false)
+            {
+                throw new Exception();
+            }
+
             var position = _mapper.Map<Position>(request.PositionDTO);
 
             position = await _positionRepository.AddAsync(position);
