@@ -23,6 +23,7 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
             _mapper = mapper;
         }
 
+        
         public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetAsync(request.Id);
@@ -36,5 +37,6 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
 
             return Unit.Value;
         }
+        
     }
 }

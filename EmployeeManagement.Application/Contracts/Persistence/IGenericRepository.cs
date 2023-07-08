@@ -9,8 +9,8 @@ namespace EmployeeManagement.Application.Contracts.Persistence
     {
         Task<T> GetAsync(int id);
         Task<IReadOnlyList<T>> GetAllAsync();
-        Task<bool> Exists(int id);
         Task<T> AddAsync(T entity);
+        Task<bool> Exists(int id);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
     }

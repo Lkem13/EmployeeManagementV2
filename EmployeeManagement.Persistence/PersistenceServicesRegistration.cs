@@ -1,8 +1,10 @@
 ﻿using EmployeeManagement.Application.Contracts.Persistence;
 using EmployeeManagement.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace EmployeeManagement.Persistence
             options.UseSqlServer(
                 configuration.GetConnectionString("EmployeeManagementConnectionString")));
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(IGenericRepository<>));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IPositionRepository, PositionRepository>();

@@ -38,4 +38,3 @@ namespace EmployeeManagement.Application.CQRS.Positions.Handlers.Commands
             }
         }
     }
-
