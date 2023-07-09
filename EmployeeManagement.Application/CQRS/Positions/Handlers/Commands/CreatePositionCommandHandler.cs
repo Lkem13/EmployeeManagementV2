@@ -38,14 +38,17 @@ namespace EmployeeManagement.Application.CQRS.Positions.Handlers.Commands
                 response.Message = "Creating Failed";
                 response.Errors = validationResult.Errors.Select(q => q.ErrorMessage).ToList();
             }
+            else
+            {
+                var position = _mapper.Map<Position>(request.PositionDTO);
 
-            var position = _mapper.Map<Position>(request.PositionDTO);
+                position = await _positionRepository.AddAsync(position);
 
-            position = await _positionRepository.AddAsync(position);
-
-            response.Success = true;
-            response.Message = "Creation Successful";
-            response.Id = position.Id;
+                response.Success = true;
+                response.Message = "Creation Successful";
+                response.Id = position.Id;
+            }
+            
             return response;
         }
     }

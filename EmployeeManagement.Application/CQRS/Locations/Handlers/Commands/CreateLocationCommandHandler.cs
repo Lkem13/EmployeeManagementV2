@@ -38,14 +38,16 @@ namespace EmployeeManagement.Application.CQRS.Locations.Handlers.Commands
                 response.Message = "Creating Failed";
                 response.Errors = validationResult.Errors.Select(q => q.ErrorMessage).ToList();
             }
+            else
+            {
+                var location = _mapper.Map<Location>(request.LocationDTO);
 
-            var location = _mapper.Map<Location>(request.LocationDTO);
+                location = await _locationRepository.AddAsync(location);
 
-            location = await _locationRepository.AddAsync(location);
-
-            response.Success = true;
-            response.Message = "Creation Successful";
-            response.Id = location.Id;
+                response.Success = true;
+                response.Message = "Creation Successful";
+                response.Id = location.Id;
+            }
             return response;
         }
     }

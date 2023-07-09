@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Application.CQRS.Locations.Requests.Commands;
 using EmployeeManagement.Application.CQRS.Locations.Requests.Queries;
 using EmployeeManagement.Application.DataTransferObject.Location;
+using EmployeeManagement.Application.Responses;
 using EmployeeManagement.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +38,9 @@ namespace EmployeeManagement.API.Controllers
 
         // POST api/<LocationsController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateLocationDTO location)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] CreateLocationDTO location)
         {
             var command = new CreateLocationCommand { LocationDTO = location };
             var response = await _mediator.Send(command);

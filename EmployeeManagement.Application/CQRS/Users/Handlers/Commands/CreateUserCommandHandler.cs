@@ -43,14 +43,17 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
                 response.Message = "Creating Failed";
                 response.Errors = validationResult.Errors.Select(q => q.ErrorMessage).ToList();
             }
+            else
+            {
+                var user = _mapper.Map<User>(request.UserDTO);
 
-            var user = _mapper.Map<User>(request.UserDTO);
+                user = await _userRepository.AddAsync(user);
 
-            user = await _userRepository.AddAsync(user);
-
-            response.Success = true;
-            response.Message = "Creation Successful";
-            response.Id = user.Id;
+                response.Success = true;
+                response.Message = "Creation Successful";
+                response.Id = user.Id;
+            }
+            
             return response;
         }
     }
