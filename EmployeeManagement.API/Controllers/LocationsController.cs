@@ -13,6 +13,7 @@ namespace EmployeeManagement.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LocationsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -23,7 +24,6 @@ namespace EmployeeManagement.API.Controllers
 
         // GET: api/<LocationsController>
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<List<LocationDTO>>> Get()
         {
             var locations = await _mediator.Send(new GetLocationListRequest());
@@ -50,7 +50,11 @@ namespace EmployeeManagement.API.Controllers
         }
 
         // PUT api/<LocationsController>
-        [HttpPut]
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> Put([FromBody] LocationDTO location)
         {
             var command = new UpdateLocationCommand { LocationDTO = location };
@@ -60,6 +64,10 @@ namespace EmployeeManagement.API.Controllers
 
         // DELETE api/<LocationsController>/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult> Delete(int id)
         {
             var command = new DeleteLocationCommand { Id = id };

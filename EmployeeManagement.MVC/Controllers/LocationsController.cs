@@ -1,10 +1,13 @@
-﻿using EmployeeManagement.MVC.Contracts;
+﻿ using EmployeeManagement.MVC.Contracts;
 using EmployeeManagement.MVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace EmployeeManagement.MVC.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class LocationsController : Controller
     {
         private readonly ILocationService _locationRepository;

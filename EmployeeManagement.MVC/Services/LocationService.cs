@@ -24,6 +24,7 @@ namespace EmployeeManagement.MVC.Services
             {
                 var response = new Response<int>();
                 CreateLocationDTO createLocation = _mapper.Map<CreateLocationDTO>(location);
+                AddBearerToken();
                 var apiResponse = await _client.LocationsPOSTAsync(createLocation);
                 if (apiResponse.Success)
                 {
@@ -49,6 +50,7 @@ namespace EmployeeManagement.MVC.Services
         {
             try
             {
+                AddBearerToken();
                 await _client.LocationsDELETEAsync(id);
                 return new Response<int>() { Success = true };
             }
@@ -60,12 +62,14 @@ namespace EmployeeManagement.MVC.Services
 
         public async Task<LocationVM> GetLocationDetails(int id)
         {
+            AddBearerToken();
             var location = await _client.LocationsGETAsync(id);
             return _mapper.Map<LocationVM>(location);
         }
 
         public async Task<List<LocationVM>> GetLocations()
         {
+            AddBearerToken();
             var locations = await _client.LocationsAllAsync();
             return _mapper.Map<List<LocationVM>>(locations);
         }
@@ -75,6 +79,7 @@ namespace EmployeeManagement.MVC.Services
             try
             {
                 LocationDTO locationDTO = _mapper.Map<LocationDTO>(location);
+                AddBearerToken();
                 await _client.LocationsPUTAsync(id, locationDTO);
                 return new Response<int>() { Success = true };
             }
