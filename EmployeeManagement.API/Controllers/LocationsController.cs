@@ -4,6 +4,7 @@ using EmployeeManagement.Application.DataTransferObject.Location;
 using EmployeeManagement.Application.Responses;
 using EmployeeManagement.Domain;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,6 +23,7 @@ namespace EmployeeManagement.API.Controllers
 
         // GET: api/<LocationsController>
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<LocationDTO>>> Get()
         {
             var locations = await _mediator.Send(new GetLocationListRequest());

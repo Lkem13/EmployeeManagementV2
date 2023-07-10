@@ -22,9 +22,11 @@ namespace EmployeeManagement.MVC.Controllers
         }
 
         // GET: LocationsController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var model = await _locationRepository.GetLocationDetails(id);
+
+            return View(model);
         }
 
         // GET: LocationsController/Create
@@ -55,45 +57,52 @@ namespace EmployeeManagement.MVC.Controllers
         }
 
         // GET: LocationsController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var model = await _locationRepository.GetLocationDetails(id);
+            return View(model);
         }
 
         // POST: LocationsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, LocationVM location)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _locationRepository.UpdateLocation(id, location);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ModelState.AddModelError("", response.ValidationErrors);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
-        }
-
-        // GET: LocationsController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+            return View(location);
         }
 
         // POST: LocationsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _locationRepository.DeleteLocation(id);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ModelState.AddModelError("", response.ValidationErrors);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
+            return BadRequest();
         }
     }
 }
