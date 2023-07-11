@@ -3,6 +3,7 @@ using EmployeeManagement.Application.CQRS.Users.Requests.Commands;
 using EmployeeManagement.Application.CQRS.Users.Requests.Queries;
 using EmployeeManagement.Application.DataTransferObject.Position;
 using EmployeeManagement.Application.DataTransferObject.User;
+using EmployeeManagement.Application.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,7 +40,7 @@ namespace EmployeeManagement.API.Controllers
 
         // POST api/<UsersController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateUserDTO user)
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] CreateUserDTO user)
         {
             var command = new CreateUserCommand { UserDTO = user };
             var response = await _mediator.Send(command);

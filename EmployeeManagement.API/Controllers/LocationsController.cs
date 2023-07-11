@@ -2,7 +2,6 @@
 using EmployeeManagement.Application.CQRS.Locations.Requests.Queries;
 using EmployeeManagement.Application.DataTransferObject.Location;
 using EmployeeManagement.Application.Responses;
-using EmployeeManagement.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

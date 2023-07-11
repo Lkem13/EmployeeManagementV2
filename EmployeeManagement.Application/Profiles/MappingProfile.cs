@@ -16,6 +16,10 @@ namespace EmployeeManagement.Application.Profiles
             CreateMap<Location, LocationDTO>().ReverseMap();
             CreateMap<Position, PositionDTO>().ReverseMap();
             CreateMap<User, UserDTO>().ReverseMap();
+
+            CreateMap<Location, CreateLocationDTO>().ReverseMap();
+            CreateMap<Position, CreatePositionDTO>().ReverseMap();
+            CreateMap<User, CreateUserDTO>().ReverseMap();
         }
     }
 }
