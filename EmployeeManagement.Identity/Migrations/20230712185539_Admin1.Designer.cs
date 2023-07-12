@@ -4,6 +4,7 @@ using EmployeeManagement.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeManagement.Identity.Migrations
 {
     [DbContext(typeof(EmployeeManagementIdentityDbContext))]
-    partial class EmployeeManagementIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230712185539_Admin1")]
+    partial class Admin1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,7 +101,7 @@ namespace EmployeeManagement.Identity.Migrations
                         {
                             Id = "8e556781-b24d-4443-a1c6-9424d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "12c83c1c-aca0-49be-a8a6-0d11eed6eec0",
+                            ConcurrencyStamp = "048d942f-f817-4fe4-8e67-1ec148b77ec8",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -107,9 +109,9 @@ namespace EmployeeManagement.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE78s1qDJ9iQaCuMX9U51VO8eX5z6VmglhoiMB70JxCDCwL6+cdR101CpFb+lYKllw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMOj6FVhvrlAXGAicmssBwjiU/961XWY4nX66SxRv9Cb71ovebnjh7HXy9Vaf11xZw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a2d715ca-0d55-4da8-94e3-1b832d279e57",
+                            SecurityStamp = "95f067df-860e-42e6-8a9a-1719d618413e",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -117,7 +119,7 @@ namespace EmployeeManagement.Identity.Migrations
                         {
                             Id = "8e556781-b24d-4443-a1c6-9424d048cdb8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e2fc5bff-4b41-4f77-93b1-25c6fbae95af",
+                            ConcurrencyStamp = "2dbeef04-566b-4d0b-82e5-fd90dc4af230",
                             Email = "admin1@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System1",
@@ -125,9 +127,9 @@ namespace EmployeeManagement.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN1@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN1@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJXONiQqCez5sID+Ohsg5iLagNr/wE/kqUB4n1SBjQsnwYSWpASI171fhCFtB5bg6A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMU35p1lwBY/m9EV2/1r86Fnni7qif1kZgjpIdfMDcJkB4tW81wdYcAP1x3Q2gW/Ug==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "544aa42c-35a7-42c6-af15-8f0fb66e7865",
+                            SecurityStamp = "30869c19-4d8a-43f0-9354-064aa223dfd7",
                             TwoFactorEnabled = false,
                             UserName = "admin1@localhost.com"
                         },
@@ -135,7 +137,7 @@ namespace EmployeeManagement.Identity.Migrations
                         {
                             Id = "2b786231-a24d-4113-a1c6-7454s043cab9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "be3e5eea-7fc9-428c-aa22-9656d3b9b7aa",
+                            ConcurrencyStamp = "5e274805-f02e-46a2-ba0b-aaf2761a3764",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -143,9 +145,9 @@ namespace EmployeeManagement.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDYXo8ZvLAfDfFa+j3lQRIH9Wy7VVeF355RhstHSmI79i++P7cy4EqdISkJp8PodAA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN8f5OGxGWHR9lEfsZvxWMkPSKc2guZgw6gc58yeSnOHniEr7FPNH73oN5WIGwW/Vw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f9c579d5-90e0-456c-9758-0c008ff75af4",
+                            SecurityStamp = "0595292f-21e7-49ce-9ab4-57252a19f4a9",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });
@@ -181,14 +183,14 @@ namespace EmployeeManagement.Identity.Migrations
                         new
                         {
                             Id = "cac43a6e-f7bb-4448-baaf-1add431ccbbf",
-                            ConcurrencyStamp = "75e78390-239f-4c42-8665-fc638a0ebe58",
+                            ConcurrencyStamp = "76536c90-20f6-4783-97e6-f7555f795eb3",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "cac43a6e-f7bb-4448-baaf-1add431ffbbf",
-                            ConcurrencyStamp = "72b72a0b-736d-4956-9717-2a21322fb624",
+                            ConcurrencyStamp = "43f5edcc-1969-4e64-981b-7c221d6cf540",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         });

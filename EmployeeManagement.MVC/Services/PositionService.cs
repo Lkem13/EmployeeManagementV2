@@ -5,27 +5,27 @@ using EmployeeManagement.MVC.Services.Base;
 
 namespace EmployeeManagement.MVC.Services
 {
-    public class LocationService : BaseHttpService, ILocationService
+    public class PositionService : BaseHttpService, IPositionService
     {
         private readonly ILocalStorageService _localStorageService;
         private readonly IMapper _mapper;
         private readonly IClient _httpClient;
 
-        public LocationService(IMapper mapper, IClient httpClient, ILocalStorageService localStorageService) : base(httpClient, localStorageService)
+        public PositionService(IMapper mapper, IClient httpClient, ILocalStorageService localStorageService) : base(httpClient, localStorageService)
         {
             _localStorageService = localStorageService;
             _mapper = mapper;
-            this._httpClient = httpClient;
+            _httpClient = httpClient;
         }
 
-        public async Task<Response<int>> CreateLocation(CreateLocationVM location)
+        public async Task<Response<int>> CreatePosition(CreatePositionVM position)
         {
             try
             {
                 var response = new Response<int>();
-                CreateLocationDTO createLocation = _mapper.Map<CreateLocationDTO>(location);
+                CreatePositionDTO createPosition = _mapper.Map<CreatePositionDTO>(position);
                 AddBearerToken();
-                var apiResponse = await _client.LocationsPOSTAsync(createLocation);
+                var apiResponse = await _client.PositionsPOSTAsync(createPosition);
                 if (apiResponse.Success)
                 {
                     response.Data = apiResponse.Id;
@@ -40,18 +40,18 @@ namespace EmployeeManagement.MVC.Services
                 }
                 return response;
             }
-            catch (ApiException ex) 
+            catch (ApiException ex)
             {
                 return ConvertApiExceptions<int>(ex);
             }
         }
 
-        public async Task<Response<int>> DeleteLocation(int id)
+        public async Task<Response<int>> DeletePosition(int id)
         {
             try
             {
                 AddBearerToken();
-                await _client.LocationsDELETEAsync(id);
+                await _client.PositionsDELETEAsync(id);
                 return new Response<int>() { Success = true };
             }
             catch (ApiException ex)
@@ -60,30 +60,30 @@ namespace EmployeeManagement.MVC.Services
             }
         }
 
-        public async Task<LocationVM> GetLocationDetails(int id)
+        public async Task<PositionVM> GetPositionDetails(int id)
         {
             AddBearerToken();
-            var location = await _client.LocationsGETAsync(id);
-            return _mapper.Map<LocationVM>(location);
+            var position = await _client.PositionsGETAsync(id);
+            return _mapper.Map<PositionVM>(position);
         }
 
-        public async Task<List<LocationVM>> GetLocations()
+        public async Task<List<PositionVM>> GetPositions()
         {
             AddBearerToken();
-            var locations = await _client.LocationsAllAsync();
-            return _mapper.Map<List<LocationVM>>(locations);
+            var positions = await _client.PositionsAllAsync();
+            return _mapper.Map<List<PositionVM>>(positions);
         }
 
-        public async Task<Response<int>> UpdateLocation(int id, LocationVM location)
+        public async Task<Response<int>> UpdatePosition(int id, PositionVM position)
         {
             try
             {
-                LocationDTO locationDTO = _mapper.Map<LocationDTO>(location);
+                PositionDTO positionDTO = _mapper.Map<PositionDTO>(position);
                 AddBearerToken();
-                await _client.LocationsPUTAsync(id, locationDTO);
+                await _client.PositionsPUTAsync(id, positionDTO);
                 return new Response<int>() { Success = true };
             }
-            catch (ApiException ex) 
+            catch (ApiException ex)
             {
                 return ConvertApiExceptions<int>(ex);
             }

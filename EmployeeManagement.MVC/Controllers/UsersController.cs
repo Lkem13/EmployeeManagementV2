@@ -1,6 +1,8 @@
 ﻿using EmployeeManagement.MVC.Contracts;
 using EmployeeManagement.MVC.Models;
+using Hanssens.Net;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace EmployeeManagement.MVC.Controllers
 {
@@ -10,7 +12,7 @@ namespace EmployeeManagement.MVC.Controllers
 
         public UsersController(IAuthenticationService authService)
         {
-            _authService = authService;
+            this._authService = authService;
         }
 
         public IActionResult Login(string returnUrl = null)
@@ -21,6 +23,7 @@ namespace EmployeeManagement.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM login, string returnUrl)
         {
+            Console.WriteLine("test");
             if (ModelState.IsValid)
             {
                 returnUrl ??= Url.Content("~/");
@@ -38,7 +41,7 @@ namespace EmployeeManagement.MVC.Controllers
         {
             return View();
         }
-
+         
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM registration)
         {

@@ -18,6 +18,7 @@ namespace EmployeeManagement.MVC.Contracts
         {
             _httpContextAccessor = httpContextAccessor;
             _tokenHandler = new JwtSecurityTokenHandler();
+            _mapper = mapper;
         }
 
         public async Task<bool> Authenticate(string email, string password)
@@ -32,7 +33,9 @@ namespace EmployeeManagement.MVC.Contracts
                     var tokenContent = _tokenHandler.ReadJwtToken(authenticationResponse.Token);
                     var claims = ParseClaims(tokenContent);
                     var user = new ClaimsPrincipal(new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme));
+#pragma warning disable CS8604 // Possible null reference argument.
                     var login = _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, user);
+#pragma warning restore CS8604 // Possible null reference argument.
                     _localStorage.SetStorageValue("token", authenticationResponse.Token);
 
                     return true;
@@ -49,7 +52,9 @@ namespace EmployeeManagement.MVC.Contracts
         public async Task Logout()
         {
             _localStorage.ClearStorage(new List<string> { "token" });
+#pragma warning disable CS8604 // Possible null reference argument.
             await _httpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+#pragma warning restore CS8604 // Possible null reference argument.
         }
 
         public async Task<bool> Register(RegisterVM registration)

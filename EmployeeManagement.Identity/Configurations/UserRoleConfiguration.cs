@@ -23,6 +23,11 @@ namespace EmployeeManagement.Identity.Configurations
                 {
                     RoleId = "cac43a6e-f7bb-4448-baaf-1add431ffbbf",
                     UserId = "8e556781-b24d-4443-a1c6-9424d048cdb9"
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = "cac43a6e-f7bb-4448-baaf-1add431ffbbf",
+                    UserId = "8e556781-b24d-4443-a1c6-9424d048cdb8"
                 });
         }
     }

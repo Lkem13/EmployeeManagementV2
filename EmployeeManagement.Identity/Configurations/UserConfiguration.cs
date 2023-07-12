@@ -30,6 +30,18 @@ namespace EmployeeManagement.Identity.Configurations
                 },
                 new ApplicationUser
                 {
+                    Id = "8e556781-b24d-4443-a1c6-9424d048cdb8",
+                    Email = "admin1@localhost.com",
+                    NormalizedEmail = "ADMIN1@LOCALHOST.COM",
+                    FirstName = "System1",
+                    LastName = "Admin1",
+                    UserName = "admin1@localhost.com",
+                    NormalizedUserName = "ADMIN1@LOCALHOST.COM",
+                    PasswordHash = hasher.HashPassword(null, "P@ssword1"),
+                    EmailConfirmed = true
+                },
+                new ApplicationUser
+                {
                     Id = "2b786231-a24d-4113-a1c6-7454s043cab9",
                     Email = "user@localhost.com",
                     NormalizedEmail = "USER@LOCALHOST.COM",

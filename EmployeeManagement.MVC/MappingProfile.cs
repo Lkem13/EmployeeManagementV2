@@ -10,6 +10,8 @@ namespace EmployeeManagement.MVC
         {
             CreateMap<CreateLocationDTO, CreateLocationVM>().ReverseMap();
             CreateMap<LocationDTO, LocationVM>().ReverseMap();
+            CreateMap<PositionDTO, PositionVM>().ReverseMap();
+            CreateMap<CreatePositionDTO, CreatePositionVM>().ReverseMap();
             CreateMap<RegisterVM, RegistrationRequest>().ReverseMap();
         }
     }
