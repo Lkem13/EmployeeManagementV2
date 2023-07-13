@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿/*
+using AutoMapper;
 using EmployeeManagement.MVC.Contracts;
 using EmployeeManagement.MVC.Models;
 using EmployeeManagement.MVC.Services.Base;
@@ -90,3 +91,4 @@ namespace EmployeeManagement.MVC.Services
         }
     }
 }
+*/
