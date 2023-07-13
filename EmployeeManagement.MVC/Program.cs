@@ -20,6 +20,7 @@ builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44309"));
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<ILocationService, LocationService>();
+builder.Services.AddScoped<IPositionService, PositionService>();
 
 
 builder.Services.AddSingleton<ILocalStorageService, LocalStorageService>();

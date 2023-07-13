@@ -1,0 +1,42 @@
+﻿@model LocationVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h4 class="alert-heading">Details</h4>
+</div>
+
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Town)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Town)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+    </dl>
+</div>
+<div>
+
+
+    <a class="btn btn-outline-secondary" asp-action="Index">
+        Back to List
+    </a>
+</div>

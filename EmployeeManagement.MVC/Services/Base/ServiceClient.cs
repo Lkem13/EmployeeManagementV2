@@ -113,12 +113,12 @@ namespace EmployeeManagement.MVC.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task PositionsPUTAsync(string id, PositionDTO body);
+        System.Threading.Tasks.Task PositionsPUTAsync(int id, PositionDTO body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task PositionsPUTAsync(string id, PositionDTO body, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task PositionsPUTAsync(int id, PositionDTO body, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1022,7 +1022,7 @@ namespace EmployeeManagement.MVC.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task PositionsPUTAsync(string id, PositionDTO body)
+        public virtual System.Threading.Tasks.Task PositionsPUTAsync(int id, PositionDTO body)
         {
             return PositionsPUTAsync(id, body, System.Threading.CancellationToken.None);
         }
@@ -1030,15 +1030,14 @@ namespace EmployeeManagement.MVC.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task PositionsPUTAsync(string id, PositionDTO body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task PositionsPUTAsync(int id, PositionDTO body, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/Positions/{id}");
-            urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
-
+            
             var client_ = _httpClient;
             var disposeClient_ = false;
             try

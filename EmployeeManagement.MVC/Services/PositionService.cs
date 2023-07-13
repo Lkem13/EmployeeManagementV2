@@ -1,5 +1,4 @@
-﻿/*
-using AutoMapper;
+﻿using AutoMapper;
 using EmployeeManagement.MVC.Contracts;
 using EmployeeManagement.MVC.Models;
 using EmployeeManagement.MVC.Services.Base;
@@ -16,7 +15,7 @@ namespace EmployeeManagement.MVC.Services
         {
             _localStorageService = localStorageService;
             _mapper = mapper;
-            _httpClient = httpClient;
+            this._httpClient = httpClient;
         }
 
         public async Task<Response<int>> CreatePosition(CreatePositionVM position)
@@ -91,4 +90,3 @@ namespace EmployeeManagement.MVC.Services
         }
     }
 }
-*/

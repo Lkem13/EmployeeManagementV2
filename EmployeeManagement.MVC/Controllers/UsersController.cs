@@ -23,17 +23,12 @@ namespace EmployeeManagement.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM login, string returnUrl)
         {
-            Console.WriteLine("test");
-            if (ModelState.IsValid)
-            {
                 returnUrl ??= Url.Content("~/");
                 var isLoggedIn = await _authService.Authenticate(login.Email, login.Password);
                 if (isLoggedIn)
                 {
                     return LocalRedirect(returnUrl);
                 }
-            }
-            ModelState.AddModelError("", "Log in attempt failed. Please try again later");
             return View(login);
         }
 
