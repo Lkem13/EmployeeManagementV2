@@ -46,7 +46,7 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
             else
             {
                 var user = _mapper.Map<User>(request.UserDTO);
-
+                user.Position.Id = request.UserDTO.PositionId;
                 user = await _userRepository.AddAsync(user);
 
                 response.Success = true;
