@@ -23,6 +23,7 @@ namespace EmployeeManagement.Persistence
                 configuration.GetConnectionString("EmployeeManagementConnectionString")));
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IPositionRepository, PositionRepository>();

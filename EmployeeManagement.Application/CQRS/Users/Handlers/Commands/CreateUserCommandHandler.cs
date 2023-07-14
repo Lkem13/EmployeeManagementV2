@@ -18,23 +18,20 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, BaseCommandResponse>
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IPositionRepository _positionRepository;
-        private readonly ILocationRepository _locationRepository;
+        
 
-        public CreateUserCommandHandler(IUserRepository userRepository, IMapper mapper, IPositionRepository positionRepository, ILocationRepository locationRepository)
+        public CreateUserCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _userRepository = userRepository;
+            this._unitOfWork = unitOfWork;
             _mapper = mapper;
-            _positionRepository = positionRepository;
-            _locationRepository = locationRepository;
         }
 
         public async Task<BaseCommandResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var response = new BaseCommandResponse();
-            var validator = new CreateUserDTOValidator(_locationRepository, _positionRepository);
+            var validator = new CreateUserDTOValidator(_unitOfWork.LocationRepository, _unitOfWork.PositionRepository);
             var validationResult = await validator.ValidateAsync(request.UserDTO);
 
             if (validationResult.IsValid == false)
@@ -46,8 +43,8 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
             else
             {
                 var user = _mapper.Map<User>(request.UserDTO);
-                user.Position.Id = request.UserDTO.PositionId;
-                user = await _userRepository.AddAsync(user);
+                user = await _unitOfWork.UserRepository.AddAsync(user);
+                await _unitOfWork.Save();
 
                 response.Success = true;
                 response.Message = "Creation Successful";

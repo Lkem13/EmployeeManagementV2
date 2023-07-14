@@ -15,11 +15,15 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Queries
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly IPositionRepository _positionRepository;
+        private readonly ILocationRepository _locationRepository;
 
-        public GetUserDetailRequestHandler(IUserRepository userRepository , IMapper mapper)
+        public GetUserDetailRequestHandler(IUserRepository userRepository , IMapper mapper, ILocationRepository locationRepository, IPositionRepository positionRepository)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _locationRepository = locationRepository;
+            _positionRepository = positionRepository;
         }
 
         public async Task<UserDTO> Handle(GetUserDetailRequest request, CancellationToken cancellationToken)

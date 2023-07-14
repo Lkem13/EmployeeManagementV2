@@ -14,36 +14,35 @@ namespace EmployeeManagement.Application.CQRS.Users.Handlers.Commands
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
     {
-        private readonly IUserRepository _userRepository;
-        private readonly ILocationRepository _locationRepository;
-        private readonly IPositionRepository _positionRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public UpdateUserCommandHandler(IUserRepository userRepository, IMapper mapper, ILocationRepository locationRepository, IPositionRepository positionRepository)
+        public UpdateUserCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _locationRepository = locationRepository;
-            _positionRepository = positionRepository;
         }
 
         public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var validator = new UpdateUserDTOValidator(_locationRepository, _positionRepository);
-            var validationResult = await validator.ValidateAsync(request.UserDTO);
-
-            if (validationResult.IsValid == false)
+            var user = await _unitOfWork.UserRepository.GetAsync(request.Id);
+            if(user is null)
             {
-                throw new ValidationException(validationResult);
+                throw new NotFoundException(nameof(user), request.Id);
             }
-
-            var user = await _userRepository.GetAsync(request.UserDTO.Id);
 
             if(request.UserDTO != null)
             {
-                _mapper.Map(request.UserDTO, user);
+                var validator = new UpdateUserDTOValidator(_unitOfWork.LocationRepository, _unitOfWork.PositionRepository);
+                var validationResult = await validator.ValidateAsync(request.UserDTO);
+                if (validationResult.IsValid == false)
+                {
+                    throw new ValidationException(validationResult);
+                }
 
-                await _userRepository.UpdateAsync(user);
+                _mapper.Map(request.UserDTO, user);
+                await _unitOfWork.UserRepository.UpdateAsync(user);
+                await _unitOfWork.Save();
             }
 
             return Unit.Value;

@@ -13,13 +13,16 @@ namespace EmployeeManagement.Application.Profiles
     {
         public MappingProfile()
         {
-            CreateMap<Location, LocationDTO>().ReverseMap();
             CreateMap<Position, PositionDTO>().ReverseMap();
-            CreateMap<User, UserDTO>().ReverseMap();
-
-            CreateMap<Location, CreateLocationDTO>().ReverseMap();
             CreateMap<Position, CreatePositionDTO>().ReverseMap();
+
+            CreateMap<Location, LocationDTO>().ReverseMap();
+            CreateMap<Location, CreateLocationDTO>().ReverseMap();
+
+            CreateMap<User, UserDTO>().ReverseMap();
             CreateMap<User, CreateUserDTO>().ReverseMap();
+            CreateMap<User, UserListDTO>().ReverseMap();
+            CreateMap<User, UpdateUserDTO>().ReverseMap();
         }
     }
 }

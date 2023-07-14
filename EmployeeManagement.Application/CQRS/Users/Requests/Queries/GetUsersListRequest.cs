@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EmployeeManagement.Application.CQRS.Users.Requests.Queries
 {
-    public class GetUserListRequest : IRequest<List<UserDTO>>
+    public class GetUserListRequest : IRequest<List<UserListDTO>>
     {
     }
 }
