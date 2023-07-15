@@ -26,7 +26,21 @@ namespace EmployeeManagement.Application.DataTransferObject.User.Validators
                     .NotNull()
                     .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
 
+            RuleFor(p => p.LocationId)
+                .GreaterThan(0)
+                .MustAsync(async (id, token) => {
+                    var locationExists = await _locationRepository.Exists(id);
+                    return locationExists;
+                })
+                .WithMessage("{PropertyName} does not exist.");
 
+            RuleFor(p => p.PositionId)
+                .GreaterThan(0)
+                .MustAsync(async (id, token) => {
+                    var positionExists = await _positionRepository.Exists(id);
+                    return positionExists;
+                })
+                .WithMessage("{PropertyName} does not exist.");
         }
     }
 }

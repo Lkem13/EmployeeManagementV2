@@ -8,10 +8,15 @@ namespace EmployeeManagement.MVC
     {
         public MappingProfile()
         {
-            CreateMap<CreateLocationDTO, CreateLocationVM>().ReverseMap();
             CreateMap<LocationDTO, LocationVM>().ReverseMap();
+            CreateMap<CreateLocationDTO, CreateLocationVM>().ReverseMap();
+
             CreateMap<PositionDTO, PositionVM>().ReverseMap();
             CreateMap<CreatePositionDTO, CreatePositionVM>().ReverseMap();
+
+            CreateMap<UserDTO, EmployeeVM>().ReverseMap();
+            CreateMap<CreateUserDTO, CreateEmployeeVM>().ReverseMap();
+
             CreateMap<RegisterVM, RegistrationRequest>().ReverseMap();
         }
     }

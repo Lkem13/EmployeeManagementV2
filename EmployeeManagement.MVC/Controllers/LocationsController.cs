@@ -105,7 +105,7 @@ namespace EmployeeManagement.MVC.Controllers
             {
                 ModelState.AddModelError("", ex.Message);
             }
-            return BadRequest();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
