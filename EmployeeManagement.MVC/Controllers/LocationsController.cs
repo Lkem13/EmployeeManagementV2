@@ -7,7 +7,7 @@ using System.Data;
 
 namespace EmployeeManagement.MVC.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    
     public class LocationsController : Controller
     {
         private readonly ILocationService _locationRepository;
@@ -32,12 +32,13 @@ namespace EmployeeManagement.MVC.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Administrator")]
         // GET: LocationsController/Create
         public ActionResult Create()
         {
             return View();
         }
-
+        [Authorize(Roles = "Administrator")]
         // POST: LocationsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -59,6 +60,7 @@ namespace EmployeeManagement.MVC.Controllers
             return View(location);
         }
 
+        [Authorize(Roles = "Administrator")]
         // GET: LocationsController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
@@ -66,6 +68,7 @@ namespace EmployeeManagement.MVC.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Administrator")]
         // POST: LocationsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -87,6 +90,7 @@ namespace EmployeeManagement.MVC.Controllers
             return View(location);
         }
 
+        [Authorize(Roles = "Administrator")]
         // POST: LocationsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
